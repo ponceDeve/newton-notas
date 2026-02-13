@@ -1,0 +1,293 @@
+/* =======================================================
+   SISTEMA UNIVERSAL DE NOTAS – REUTILIZABLE Y RESPONSIVE
+======================================================= */
+
+/* ================= VARIABLES ================= */
+
+:root {
+  --bg-page: #0f172a;
+  --bg-card: #1e293b;
+  --bg-subcard: #162033;
+  --bg-note: #2a2112;
+
+  --color-primary: #38bdf8;
+  --color-warning: #facc15;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+
+  --text-main: #f1f5f9;
+  --text-soft: #94a3b8;
+
+  --radius: 14px;
+  --transition: 0.25s ease;
+}
+
+/* ================= RESET BÁSICO ================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+}
+
+/* ================= CONTENEDOR GENERAL ================= */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(15px, 4vw, 40px);
+}
+
+/* ================= TITULOS ================= */
+
+h1, h2, h3, h4 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--color-primary); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: #7dd3fc; }
+h4 { font-size: 1.1rem; }
+
+/* ================= SUBTEMAS ================= */
+
+.subtema {
+  background: var(--bg-card);
+  padding: 25px;
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius);
+  margin-bottom: 40px;
+}
+
+/* ================= SUB-SUBTEMAS ================= */
+
+.subsubtema {
+  background: var(--bg-subcard);
+  padding: 20px;
+  border-left: 4px solid #7dd3fc;
+  border-radius: var(--radius);
+  margin-top: 25px;
+}
+
+/* ================= NOTAS IMPORTANTES ================= */
+
+.nota {
+  background: var(--bg-note);
+  border-left: 5px solid var(--color-warning);
+  padding: 15px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+
+/* ================= ALERTAS GENERALES ================= */
+
+.alert {
+  padding: 15px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+}
+
+.alert-info {
+  background: rgba(56,189,248,0.1);
+  border-left: 5px solid var(--color-primary);
+}
+
+.alert-success {
+  background: rgba(34,197,94,0.1);
+  border-left: 5px solid var(--color-success);
+}
+
+.alert-danger {
+  background: rgba(239,68,68,0.1);
+  border-left: 5px solid var(--color-danger);
+}
+
+/* ================= LISTAS ================= */
+
+ul, ol {
+  margin: 15px 0 15px 25px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* ================= TABLAS ================= */
+
+.table-responsive {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #334155;
+  text-align: center;
+}
+
+th {
+  background: var(--color-primary);
+  color: black;
+}
+
+/* ================= BOTONES ================= */
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: black;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-success {
+  background: var(--color-success);
+  color: black;
+}
+
+.btn-danger {
+  background: var(--color-danger);
+  color: white;
+}
+
+/* ================= PALABRAS CLAVE ================= */
+
+.keyword {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Tooltip arriba */
+.keyword::after {
+  content: attr(data-def);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: var(--bg-card);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+
+  width: max-content;
+  max-width: 250px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+
+  border-bottom: 3px solid var(--color-primary);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+
+  z-index: 50;
+}
+
+.keyword:hover::after {
+  opacity: 1;
+}
+
+.content-img {
+  max-width: 350px;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  margin: 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  position: relative;
+  z-index: 555;
+}
+
+.content-img::after,
+.content-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 0;
+  z-index: 999;
+  transition: .3s linear;
+  background-color:var(--text-soft);
+}
+
+.content-img::after {
+  left: 0;
+}
+
+.content-img::before {
+  right: 0;
+}
+
+
+.content-img:hover::before,
+.content-img:hover::after {
+  height: 100%;
+}
+
+.imagen-s {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: .3s linear;
+}
+
+.imagen-s:hover {
+  scale: 1.2;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  table {
+    min-width: 450px;
+  }
+
+  .keyword::after {
+    max-width: 180px;
+    font-size: 0.75rem;
+  }
+  
+  .content-img {
+    margin: 20px 0;
+  }
+}
